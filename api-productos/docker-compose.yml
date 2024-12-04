@@ -1,0 +1,15 @@
+services:
+  api:
+    build: .
+    ports:
+      - "4000:4000"
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/api_productos
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo:latest
+    volumes:
+      - mongodb_data:/data/db
+volumes:
+  mongodb_data:
